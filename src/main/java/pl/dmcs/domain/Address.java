@@ -18,8 +18,8 @@ public class Address {
 	
 //	@OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
 //    @JoinTable(name="appuser_address",joinColumns = @JoinColumn(name="appuser_id"),inverseJoinColumns = @JoinColumn(name="address_id"))
-	@OneToMany(mappedBy = "address")
-	private List<AppUser> appUserList;
+//	@OneToMany(mappedBy = "address")
+//	private List<AppUser> appUserList;
 
 	public long getId() {
 		return id;
@@ -51,10 +51,10 @@ public class Address {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-	public List<AppUser> getAppUserList() {
-		return appUserList;
-	}
-	public void setAppUserList(List<AppUser> appUserList) {
-		this.appUserList = appUserList;
-	}
+//	public List<AppUser> getAppUserList() {
+//		return appUserList;
+//	}
+//	public void setAppUserList(List<AppUser> appUserList) {
+//		this.appUserList = appUserList;
+//	}
 }
