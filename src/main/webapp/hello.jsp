@@ -10,11 +10,27 @@
 <body>
 <h3>Hello world!</h3>
 
-<a href="/appUsers">App users page</a>
-<a href="/appUserRole"><spring:message code="label.role"/></a> <br/>
-<a href="/exampleOne"><spring:message code="label.example"/> 1</a> <br/>
-<a href="/exampleTwo"><spring:message code="label.example"/> 2</a> <br/>
-<a href="/exampleThree"><spring:message code="label.example"/> 3</a> <br/>
+<sec:authorize access="isAnonymous()">
+    <a href="/login"><spring:message code="label.login"/></a> <br/>
+</sec:authorize>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+    <a href="/appUsers"><spring:message code="label.addAppUser"/></a> <br/>
+    <a href="/appUserRole"><spring:message code="label.role"/></a> <br/>
+    <a href="addresses"><spring:message code="label.address"/></a> <br/>
+</sec:authorize>
+
+<sec:authorize access="hasRole('ROLE_USER')">
+    <a href="/exampleOne"><spring:message code="label.example"/> 1</a> <br/>
+</sec:authorize>
+
+<sec:authorize access="hasAnyRole('ROLE_STUDENT','ROLE_ADMIN')">
+    <a href="/exampleTwo"><spring:message code="label.example"/> 2</a> <br/>
+</sec:authorize>
+
+<sec:authorize access="hasRole('ROLE_STUDENT')">
+    <a href="/exampleThree"><spring:message code="label.example"/> 3</a> <br/>
+</sec:authorize>
 
 <script>
     function formSubmit() {

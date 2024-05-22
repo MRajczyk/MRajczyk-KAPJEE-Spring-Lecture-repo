@@ -31,13 +31,13 @@ public class MyAppUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(final String login) throws UsernameNotFoundException {
  
-		AppUser appUser = appUserService.findByLogin(login);
+		pl.dmcs.domain.AppUser appUser = appUserService.findByLogin(login);
 		List<GrantedAuthority> authorities = buildUserAuthority(appUser.getAppUserRole());
 		return buildUserForAuthentication(appUser, authorities);
 	}
  
 	// Converts AppUser user to org.springframework.security.core.userdetails.User
-	private User buildUserForAuthentication(AppUser appUser, List<GrantedAuthority> authorities) {
+	private User buildUserForAuthentication(pl.dmcs.domain.AppUser appUser, List<GrantedAuthority> authorities) {
 
 		return new User(appUser.getLogin(), appUser.getPassword(), appUser.isEnabled(),
 				true, true, true, authorities);

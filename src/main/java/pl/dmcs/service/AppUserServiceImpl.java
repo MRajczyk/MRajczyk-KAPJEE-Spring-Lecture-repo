@@ -34,7 +34,7 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Transactional
     public void editAppUser(AppUser appUser) {
-        //appUser.getAppUserRole().add(appUserRoleRepository.findByRole("ROLE_USER"));
+        appUser.getAppUserRole().add(appUserRoleRepository.findByRole("ROLE_USER"));
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
         appUserRepository.save(appUser);
     }
