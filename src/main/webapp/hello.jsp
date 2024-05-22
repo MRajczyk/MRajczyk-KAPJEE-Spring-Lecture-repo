@@ -20,7 +20,7 @@
     <a href="addresses"><spring:message code="label.address"/></a> <br/>
 </sec:authorize>
 
-<sec:authorize access="hasRole('ROLE_USER')">
+<sec:authorize access="hasAnyRole('ROLE_STUDENT','ROLE_ADMIN')">
     <a href="/exampleOne"><spring:message code="label.example"/> 1</a> <br/>
 </sec:authorize>
 

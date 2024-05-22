@@ -75,10 +75,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/appUsers*").hasAnyRole("ADMIN","USER")
                         .requestMatchers("/appUserRole*").hasRole("ADMIN")
-                        .requestMatchers("/exampleOne*").hasAuthority("ROLE_USER")
+                        .requestMatchers("/exampleOne*").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                         .requestMatchers("/exampleTwo*").hasAnyAuthority("ROLE_STUDENT", "ROLE_ADMIN")
                         .requestMatchers("/exampleThree*").hasRole("STUDENT")
-//                        .requestMatchers("/appUserRest/*").anonymous()
+                        .requestMatchers("/appUserRest/*").anonymous()
                         .requestMatchers("/login*").anonymous()
                         .anyRequest().authenticated()
                 )
