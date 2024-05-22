@@ -1,6 +1,8 @@
 package pl.dmcs.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="appuser")
@@ -9,10 +11,19 @@ public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @Column(name = "firstName", nullable = false)
+    @NotNull
+    @Column(name="firstName", nullable=false)
+    @Size(min=2, max=30, message = "{error.size.firstName}")
     private String firstName;
+
+    @NotNull
+    @Size(min=2, max=30)
     private String lastName;
+
+    @NotNull
     private String email;
+
+    @Size(min=9, max=9)
     private String telephone;
 
     public long getId() {
