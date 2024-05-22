@@ -22,24 +22,24 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-//    @Resource(name="myAppUserDetailsService")
-//    private UserDetailsService userDetailsService;
-//
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-//
-//    @Bean
-//    DaoAuthenticationProvider authProvider(){
-//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        // for database users
-//        authProvider.setUserDetailsService(userDetailsService);
-//        authProvider.setPasswordEncoder(passwordEncoder());
-//        // for in-memory users
-//        //authProvider.setUserDetailsService(userDetailsService());
-//        return authProvider;
-//    }
+    @Resource(name="myAppUserDetailsService")
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    DaoAuthenticationProvider authProvider(){
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        // for database users
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        // for in-memory users
+        //authProvider.setUserDetailsService(userDetailsService());
+        return authProvider;
+    }
 
     // for in-memory users
     @Bean
@@ -74,7 +74,7 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/appUsers*").hasAnyRole("ADMIN","USER")
-//                        .requestMatchers("/appUserRole*").hasRole("ADMIN")
+                        .requestMatchers("/appUserRole*").hasRole("ADMIN")
                         .requestMatchers("/exampleOne*").hasAuthority("ROLE_USER")
                         .requestMatchers("/exampleTwo*").hasAnyAuthority("ROLE_STUDENT", "ROLE_ADMIN")
                         .requestMatchers("/exampleThree*").hasRole("STUDENT")

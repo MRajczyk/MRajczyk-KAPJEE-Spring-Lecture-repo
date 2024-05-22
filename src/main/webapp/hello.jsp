@@ -2,6 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <html>
 <head>
     <title>Hello world!</title>
@@ -10,6 +11,7 @@
 <h3>Hello world!</h3>
 
 <a href="/appUsers">App users page</a>
+<a href="/appUserRole"><spring:message code="label.role"/></a> <br/>
 <a href="/exampleOne"><spring:message code="label.example"/> 1</a> <br/>
 <a href="/exampleTwo"><spring:message code="label.example"/> 2</a> <br/>
 <a href="/exampleThree"><spring:message code="label.example"/> 3</a> <br/>

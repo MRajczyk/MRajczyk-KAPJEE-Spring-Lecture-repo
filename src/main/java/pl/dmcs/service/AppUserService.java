@@ -11,4 +11,5 @@ public interface AppUserService {
     public List<AppUser> listAppUser();
     public void removeAppUser(long id);
     public AppUser getAppUser(long id);
+    AppUser findByLogin(String login);
 }
