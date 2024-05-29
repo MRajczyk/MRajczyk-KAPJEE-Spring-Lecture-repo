@@ -1,6 +1,7 @@
 package pl.dmcs.configuration;
 
 import jakarta.annotation.Resource;
+import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -73,12 +74,13 @@ public class SecurityConfiguration {
 
         http
                 .authorizeHttpRequests((authz) -> authz
+                        .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                         .requestMatchers("/appUsers*").hasAnyRole("ADMIN","USER")
                         .requestMatchers("/appUserRole*").hasRole("ADMIN")
                         .requestMatchers("/exampleOne*").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                         .requestMatchers("/exampleTwo*").hasAnyAuthority("ROLE_STUDENT", "ROLE_ADMIN")
                         .requestMatchers("/exampleThree*").hasRole("STUDENT")
-                        .requestMatchers("/appUserRest/*").anonymous()
+                        .requestMatchers("/appUserRest/*").permitAll()
                         .requestMatchers("/login*").anonymous()
                         .anyRequest().authenticated()
                 )

@@ -21,8 +21,7 @@ public class AppUserRoleConverter implements Converter<String, Set<AppUserRole>>
 	public Set<AppUserRole> convert(String source) {
 		
 		Set<AppUserRole> userRoleList = new HashSet<AppUserRole>(0);
-		
-			userRoleList.add(appUserRoleService.getAppUserRole(Integer.parseInt(source)));
+		userRoleList.add(appUserRoleService.getAppUserRole(Integer.parseInt(source)));
 		
 		return userRoleList;
 	}

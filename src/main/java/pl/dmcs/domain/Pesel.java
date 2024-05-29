@@ -1,5 +1,6 @@
 package pl.dmcs.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -12,7 +13,7 @@ public class Pesel {
 	
 	String PESEL;
 
-	@JsonIgnore
+	@JsonBackReference
 	@OneToOne(mappedBy="pesel")
 	private AppUser appUser;
 
@@ -32,12 +33,12 @@ public class Pesel {
 		this.PESEL = PESEL;
 	}
 
-//	public AppUser getAppUser() {
-//		return appUser;
-//	}
-//
-//	public void setAppUser(AppUser appUser) {
-//		this.appUser = appUser;
-//	}
+	public AppUser getAppUser() {
+		return appUser;
+	}
+
+	public void setAppUser(AppUser appUser) {
+		this.appUser = appUser;
+	}
 }
 
