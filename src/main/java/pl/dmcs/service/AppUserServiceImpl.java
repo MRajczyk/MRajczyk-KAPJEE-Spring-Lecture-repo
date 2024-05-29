@@ -1,6 +1,7 @@
 package pl.dmcs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -63,5 +64,18 @@ public class AppUserServiceImpl implements AppUserService {
     @Transactional
     public AppUser findByLogin(String login) {
         return appUserRepository.findByLogin(login);
+    }
+
+    @Scheduled(fixedRate = 20 * 1000)
+    //@Scheduled(cron = "0 15 10 15 * ?")
+    public void activateInactiveAppUsers() {
+        String processName = "activating_inactive_users";
+        System.out.println("activating_inactive_users: ");
+        List<AppUser> appUsers = appUserRepository.findAllByEnabledIsFalse();
+        appUsers.forEach(appUser -> {
+            appUser.setEnabled(true);
+            appUserRepository.saveAndFlush(appUser);
+            System.out.println(appUser.getLogin());
+        });
     }
 }

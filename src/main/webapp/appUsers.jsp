@@ -13,6 +13,7 @@
 <html>
 <head>
     <title><spring:message code="label.addAppUser"/>App User</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
     <div class="header">
@@ -83,6 +84,11 @@
                 <td><form:errors path="appUserRole"/></td>
             </tr>
             <tr>
+                <td colspan="3">
+                    <div class="g-recaptcha" data-sitekey=${captchaSiteKey}></div>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
                     <c:if test="${appUser.id == 0}">
                         <input type="submit" value="<spring:message code="label.addAppUser"/>"/>
@@ -104,6 +110,7 @@
                 <th><spring:message code="label.telephone"/></th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
+                <th> </th>
             </tr>
             <c:forEach items="${appUserList}" var="appUser">
                 <tr>
@@ -113,6 +120,7 @@
                     <td>${appUser.telephone}</td>
                     <td><a href="delete/${appUser.id}">delete</a></td>
                     <td><a href="appUsers?appUserId=${appUser.id}">edit</a></td>
+                    <td><a href="generatePdf-${appUser.id}">pdf</a></td>
                 </tr>
             </c:forEach>
         </table>

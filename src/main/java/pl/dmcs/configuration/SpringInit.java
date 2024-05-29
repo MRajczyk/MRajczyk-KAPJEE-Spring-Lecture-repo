@@ -10,7 +10,7 @@ public class SpringInit extends AbstractAnnotationConfigDispatcherServletInitial
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{SecurityConfiguration.class, SpringConfiguration.class, HibernatePersistenceConfiguration.class};
+        return new Class[]{SecurityConfiguration.class, SpringConfiguration.class, HibernatePersistenceConfiguration.class, EmailManagerConfiguration.class};
     }
 
     protected Class<?>[] getServletConfigClasses() {
