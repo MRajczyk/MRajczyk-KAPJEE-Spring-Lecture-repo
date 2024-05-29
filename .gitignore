@@ -33,3 +33,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### stupid take on env var
+src/main/java/pl/dmcs/service/tempEnvironmentVars.java
