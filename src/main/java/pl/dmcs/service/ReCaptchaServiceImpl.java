@@ -23,7 +23,7 @@ public class ReCaptchaServiceImpl implements ReCaptchaService {
             URL obj = new URL(URL);
             HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
             con.setRequestMethod("POST");
-            String postParams = "secret=" + tempEnvironmentVars.GOOGLE_KEY + "&response=" + captcha;
+            String postParams = "secret=" + EnvironmentVars.GOOGLE_KEY + "&response=" + captcha;
             // Send post request
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());

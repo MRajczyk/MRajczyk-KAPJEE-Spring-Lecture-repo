@@ -57,7 +57,7 @@ public class AppUserController {
         model.addAttribute("appUserList", appUserService.listAppUser());
         model.addAttribute("appUserRoleList",appUserRoleService.listAppUserRole());
         model.addAttribute("addressesList", addressService.listAddress());
-        model.addAttribute("captchaSiteKey", tempEnvironmentVars.SITE_KEY);
+        model.addAttribute("captchaSiteKey", EnvironmentVars.SITE_KEY);
 
         return "appUsers";
     }

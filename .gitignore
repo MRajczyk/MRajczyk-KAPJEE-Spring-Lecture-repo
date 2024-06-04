@@ -36,3 +36,4 @@ build/
 
 ### stupid take on env var
 src/main/java/pl/dmcs/service/tempEnvironmentVars.java
+/src/main/java/pl/dmcs/service/EnvironmentVars.java

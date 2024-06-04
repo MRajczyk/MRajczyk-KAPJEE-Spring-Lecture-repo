@@ -7,8 +7,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
-import static pl.dmcs.service.tempEnvironmentVars.GMAIL_SMTP_KEY;
-import static pl.dmcs.service.tempEnvironmentVars.EMAIL_ADDRESS;
+import static pl.dmcs.service.EnvironmentVars.GMAIL_SMTP_KEY;
+import static pl.dmcs.service.EnvironmentVars.EMAIL_ADDRESS;
 
 @Configuration
 public class EmailManagerConfiguration {
